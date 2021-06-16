@@ -1,0 +1,9 @@
+C:\Users\gorbushin_v_a\source\repos\sharps_ent\DTO\bin\Debug\netcoreapp3.1\BLL.deps.json
+C:\Users\gorbushin_v_a\source\repos\sharps_ent\DTO\bin\Debug\netcoreapp3.1\BLL.dll
+C:\Users\gorbushin_v_a\source\repos\sharps_ent\DTO\bin\Debug\netcoreapp3.1\BLL.pdb
+C:\Users\gorbushin_v_a\source\repos\sharps_ent\DTO\obj\Debug\netcoreapp3.1\BLL.csprojAssemblyReference.cache
+C:\Users\gorbushin_v_a\source\repos\sharps_ent\DTO\obj\Debug\netcoreapp3.1\BLL.AssemblyInfoInputs.cache
+C:\Users\gorbushin_v_a\source\repos\sharps_ent\DTO\obj\Debug\netcoreapp3.1\BLL.AssemblyInfo.cs
+C:\Users\gorbushin_v_a\source\repos\sharps_ent\DTO\obj\Debug\netcoreapp3.1\BLL.csproj.CoreCompileInputs.cache
+C:\Users\gorbushin_v_a\source\repos\sharps_ent\DTO\obj\Debug\netcoreapp3.1\BLL.dll
+C:\Users\gorbushin_v_a\source\repos\sharps_ent\DTO\obj\Debug\netcoreapp3.1\BLL.pdb

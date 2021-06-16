@@ -1,0 +1,28 @@
+﻿@{
+    ViewData["Title"] = @ViewContext.RouteData.Values["controller"];
+}
+
+<form action="/Statistics/Download" method="GET">
+    <button type="submit" name="download" class="btn btn-warning">Скачать</button>
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            @foreach (var label in Model[0])
+            {
+                <th scope="col">@label</th>
+            }
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var obj in Model[1])
+        {
+            <tr>
+                @foreach (var cell in obj)
+                {
+                    <td>@cell</td>
+                }
+            </tr>
+        }
+    </tbody>
+</table>

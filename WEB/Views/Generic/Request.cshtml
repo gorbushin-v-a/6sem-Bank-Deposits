@@ -1,0 +1,40 @@
+﻿@{
+    ViewData["Title"] = @ViewContext.RouteData.Values["controller"];
+}
+
+<div>
+    <div class="border justify-content-center">
+        <form action="/@ViewContext.RouteData.Values["controller"]/@Model[1][0]"
+              method="POST">
+            @for (var i = 0; i < Model[0].Length; i++)
+            {
+                <div class="form-group">
+                    <label for="@i" @(i == 0 ? "hidden" : "")>@Model[0][i]</label>
+                    @if (Model.Length > 2)
+                    {
+                        <input type="text" class="form-control" name="@i" placeholder="@Model[0][i]" id="@i" value="@Model[2][i]" @(i == 0 ? "hidden" : "")>
+                    }
+                    else
+                    {
+                        <input type="text" class="form-control" name="@i" placeholder="@Model[0][i]" id="@i" @(i == 0 ? "hidden" : "")>
+                    }
+                </div>
+            }
+            @if (Model.Length > 2)
+            {
+                <button type="submit" name="AddAction" class="btn btn-success">Изменить</button>
+            }
+            else
+            {
+                @if (@Model[1][0] == "AddResponceAction")
+                {
+                    <button type="submit" name="GetAction" class="btn btn-success">Добавить</button>
+                }
+                else
+                {
+                    <button type="submit" name="GetAction" class="btn btn-success">Найти</button>
+                }
+            }
+        </form>
+    </div>
+</div>

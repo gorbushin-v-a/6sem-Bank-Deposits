@@ -1,0 +1,77 @@
+﻿@{
+    ViewData["Title"] = @ViewContext.RouteData.Values["controller"];
+}
+<form action="/@ViewContext.RouteData.Values["controller"]/AddRequestAction" method="POST">
+    <button type="submit" name="create_request" class="btn btn-primary">Создать новый</button>
+</form>
+<form action="/@ViewContext.RouteData.Values["controller"]/GetRequestAction" method="GET">
+    <button type="submit" name="create_request" class="btn btn-warning">Отфильтровать</button>
+</form>
+<div class=container>
+    <h1>Найдено сущностей: @Model[1].Length</h1>
+    @if (Model[3] != null)
+    {
+        @foreach (var raw in Model[3])
+        {
+            <p>@raw</p>
+        }
+    }
+    <table cellspacing=0 class="table table-bordered table-hover table-inverse table-striped" id=data width=100%>
+        <thead>
+            <tr>
+                @foreach (var label in Model[0])
+                {
+                    <th class="th-sm sorting">@label</th>
+                }
+                <th class="th-sm sorting">Edit</th>
+                <th class="th-sm sorting">Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (var j = 0; j < Model[1].Length; j++)
+            {
+            <tr>
+                @for (var i = 0; i < Model[1][j].Length; i++)
+                {
+                    @if (Model[2] != null && Model[2].ContainsKey(i))
+                    {
+                        <td>
+                            <form action="/@Model[2][i]/GetResponceAction2" id="@Model[2][i]_@j" method="post">
+                                <input type="text" class="form-control" name="0" id="0" value="@Model[1][j][i]" hidden>
+                                <a href="javascript:{}" onclick="document.getElementById('@Model[2][i]_@j').submit(); return false;">@Model[1][j][i]</a>
+                            </form>
+                        </td>
+                    }
+                    else
+                    {
+                        <td>@Model[1][j][i]</td>
+                    }
+                }
+                <td>
+                    <form action="/@ViewContext.RouteData.Values["controller"]/UpdateRequestAction" method="POST">
+                        <input type="hidden" name="id" id="u_id" value="@Model[1][j][0]" />
+                        <button type="submit" name="update_request" class="btn btn-warning"><xmp>Edit</xmp></button>
+                    </form>
+                </td>
+                <td>
+                    <form action="/@ViewContext.RouteData.Values["controller"]/DeleteResponceAction" method="POST">
+                        <input type="hidden" name="id" id="d_id" value="@Model[1][j][0]" />
+                        <button type="submit" name="delete" class="btn btn-danger"><xmp>Delete</xmp></button>
+                    </form>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<script src=https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.20/js/jquery.dataTables.min.js></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.20/js/dataTables.bootstrap4.min.js></script>
+
+<script>
+    $(document).ready(function () {
+        $.noConflict();
+        var table = $('#data').DataTable();
+    });
+</script>
