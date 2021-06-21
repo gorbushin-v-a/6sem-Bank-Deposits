@@ -10,12 +10,14 @@ namespace sharps_ent.Controllers
     {
 
         private readonly ICityService cityService;
-        public CityController(ILogger<GenericController> logger, ICityService cityService) : base(logger)
+        private readonly ICountryService countryService;
+        public CityController(ILogger<GenericController> logger, ICityService cityService, ICountryService countryService) : base(logger)
         {
             this.cityService = cityService;
+            this.countryService = countryService;
         }
 
-        public override string[] Labels => new string[]{ "NameOfCity", "CountryId" };
+        public override string[] Labels => new string[]{ "NameOfCity", "Country" };
 
         protected override void AddObject()
         {
@@ -48,7 +50,7 @@ namespace sharps_ent.Controllers
                     }
                     if (HttpContext.Request.Form.ContainsKey("2") && HttpContext.Request.Form["2"] != "")
                     {
-                        objects = objects.Where(x => x.CountryId.ToString() == HttpContext.Request.Form["2"]);
+                        objects = objects.Where(x => countryService.GetCountryById(x.CountryId).NameOfCountry == HttpContext.Request.Form["2"]);
                     }
                 }
             }
@@ -71,5 +73,9 @@ namespace sharps_ent.Controllers
             cityService.DeleteCity(cityService.GetCityById(int.Parse(HttpContext.Request.Form["id"])));
         }
         protected override Dictionary<int, string> GetAttributes() => new Dictionary<int, string>() { { 2, "Country" } };
+
+        protected override object GetNames() => new Dictionary<int, string[]> {
+            { 2, cityService.GetCities().Where(x => GetObjects().Select(y => y[0]).Contains(x.CityId.ToString())).Select(x => countryService.GetCountryById(x.CountryId)?.NameOfCountry).ToArray() }
+        };
     }
 }

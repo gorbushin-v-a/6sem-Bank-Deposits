@@ -8,14 +8,22 @@ namespace sharps_ent.Controllers
 {
     public sealed class DepositController : GenericController
     {
-
         private readonly IDepositService depositService;
-        public DepositController(ILogger<GenericController> logger, IDepositService depositService) : base(logger)
+        private readonly IEmployeeService employeeService;
+        private readonly IDepositorService depositorService;
+        private readonly IStatusService statusService;
+        private readonly IBankService bankService;
+
+        public DepositController(ILogger<GenericController> logger, IDepositService depositService, IEmployeeService employeeService, IDepositorService depositorService, IStatusService statusService, IBankService bankService) : base(logger)
         {
             this.depositService = depositService;
+            this.employeeService = employeeService;
+            this.depositorService = depositorService;
+            this.statusService = statusService;
+            this.bankService = bankService;
         }
 
-        public override string[] Labels => new string[] { "EmployeeId", "DepositorId", "StatusId", "BankId", "Percent", "Description" };
+        public override string[] Labels => new string[] { "Employee", "Depositor", "Status", "Bank", "Percent", "Description" };
 
         protected override void AddObject()
         {
@@ -48,19 +56,19 @@ namespace sharps_ent.Controllers
                     }
                     if (HttpContext.Request.Form.ContainsKey("1") && HttpContext.Request.Form["1"] != "")
                     {
-                        objects = objects.Where(x => x.EmployeeId.ToString() == HttpContext.Request.Form["1"]);
+                        objects = objects.Where(x => employeeService.GetEmployeeById(x.EmployeeId).NameOfEmployee == HttpContext.Request.Form["1"]);
                     }
                     if (HttpContext.Request.Form.ContainsKey("2") && HttpContext.Request.Form["2"] != "")
                     {
-                        objects = objects.Where(x => x.DepositorId.ToString() == HttpContext.Request.Form["2"]);
+                        objects = objects.Where(x => depositorService.GetDepositorById(x.DepositorId).NameOfDepositor == HttpContext.Request.Form["2"]);
                     }
                     if (HttpContext.Request.Form.ContainsKey("3") && HttpContext.Request.Form["3"] != "")
                     {
-                        objects = objects.Where(x => x.StatusId.ToString() == HttpContext.Request.Form["3"]);
+                        objects = objects.Where(x => statusService.GetStatusById(x.StatusId).NameOfStatus == HttpContext.Request.Form["3"]);
                     }
                     if (HttpContext.Request.Form.ContainsKey("4") && HttpContext.Request.Form["4"] != "")
                     {
-                        objects = objects.Where(x => x.BankId.ToString() == HttpContext.Request.Form["4"]);
+                        objects = objects.Where(x => bankService.GetBankById(x.BankId).NameOfBank == HttpContext.Request.Form["4"]);
                     }
                     if (HttpContext.Request.Form.ContainsKey("5") && HttpContext.Request.Form["5"] != "")
                     {
@@ -109,19 +117,19 @@ namespace sharps_ent.Controllers
                 }
                 if (HttpContext.Request.Form.ContainsKey("1") && HttpContext.Request.Form["1"] != "")
                 {
-                    objects = objects.Where(x => x.EmployeeId.ToString() == HttpContext.Request.Form["1"]);
+                    objects = objects.Where(x => employeeService.GetEmployeeById(x.EmployeeId).NameOfEmployee == HttpContext.Request.Form["1"]);
                 }
                 if (HttpContext.Request.Form.ContainsKey("2") && HttpContext.Request.Form["2"] != "")
                 {
-                    objects = objects.Where(x => x.DepositorId.ToString() == HttpContext.Request.Form["2"]);
+                    objects = objects.Where(x => depositorService.GetDepositorById(x.DepositorId).NameOfDepositor == HttpContext.Request.Form["2"]);
                 }
                 if (HttpContext.Request.Form.ContainsKey("3") && HttpContext.Request.Form["3"] != "")
                 {
-                    objects = objects.Where(x => x.StatusId.ToString() == HttpContext.Request.Form["3"]);
+                    objects = objects.Where(x => statusService.GetStatusById(x.StatusId).NameOfStatus == HttpContext.Request.Form["3"]);
                 }
                 if (HttpContext.Request.Form.ContainsKey("4") && HttpContext.Request.Form["4"] != "")
                 {
-                    objects = objects.Where(x => x.BankId.ToString() == HttpContext.Request.Form["4"]);
+                    objects = objects.Where(x => bankService.GetBankById(x.BankId).NameOfBank == HttpContext.Request.Form["4"]);
                 }
                 if (HttpContext.Request.Form.ContainsKey("5") && HttpContext.Request.Form["5"] != "")
                 {
@@ -134,5 +142,12 @@ namespace sharps_ent.Controllers
             }
             return objects;
         }
+
+        protected override object GetNames() => new Dictionary<int, string[]> {
+            { 1, depositService.GetDeposits().Where(x => GetObjects().Select(y => y[0]).Contains(x.DepositId.ToString())).Select(x => employeeService.GetEmployeeById(x.EmployeeId).NameOfEmployee).ToArray() } ,
+            { 2, depositService.GetDeposits().Where(x => GetObjects().Select(y => y[0]).Contains(x.DepositId.ToString())).Select(x => depositorService.GetDepositorById(x.DepositorId).NameOfDepositor).ToArray() } ,
+            { 3, depositService.GetDeposits().Where(x => GetObjects().Select(y => y[0]).Contains(x.DepositId.ToString())).Select(x => statusService.GetStatusById(x.StatusId).NameOfStatus).ToArray() } ,
+            { 4, depositService.GetDeposits().Where(x => GetObjects().Select(y => y[0]).Contains(x.DepositId.ToString())).Select(x => bankService.GetBankById(x.BankId).NameOfBank).ToArray() }
+        };
     }
 }

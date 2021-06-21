@@ -1,0 +1,69 @@
+2021-06-17T10:19:58.7649312+03:00  [INF] Entity Framework Core "5.0.7" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.Sqlite"' with options: "MigrationsAssembly=TestServicePlatform.DAL " (9958f5bb)
+2021-06-17T10:19:59.8002305+03:00  [INF] Executed DbCommand ("55"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*) FROM \"sqlite_master\" WHERE \"type\" = 'table' AND \"rootpage\" IS NOT NULL;" (0723d8ff)
+2021-06-17T10:19:59.9757949+03:00  [INF] User profile is available. Using '"C:\Users\gorbushin_v_a\AppData\Local\ASP.NET\DataProtection-Keys"' as key repository and Windows DPAPI to encrypt keys at rest. (7ac5e29c)
+2021-06-17T10:20:01.0047112+03:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2021-06-17T10:20:01.0153924+03:00  [INF] Hosting environment: "Development" (c3307c92)
+2021-06-17T10:20:01.0197980+03:00  [INF] Content root path: "C:\Users\gorbushin_v_a\source\repos\sharps_ent\WEB" (b5d60022)
+2021-06-17T10:20:01.0818527+03:00 80000093-0001-fc00-b63f-84710c7967bb [INF] Request starting HTTP/2.0 GET https://localhost:44357/   (ca22a1cb)
+2021-06-17T10:20:01.2912664+03:00 80000093-0001-fc00-b63f-84710c7967bb [INF] Executing endpoint '"sharps_ent.Controllers.HomeController.Index (WEB)"' (500cc934)
+2021-06-17T10:20:01.3676430+03:00 80000093-0001-fc00-b63f-84710c7967bb [INF] Route matched with "{action = \"Index\", controller = \"Home\"}". Executing controller action with signature "Microsoft.AspNetCore.Mvc.IActionResult Index()" on controller "sharps_ent.Controllers.HomeController" ("WEB"). (122b2fdf)
+2021-06-17T10:20:01.4145002+03:00 80000093-0001-fc00-b63f-84710c7967bb [INF] Executing ViewResult, running view "Index". (c83d0e25)
+2021-06-17T10:20:01.7376628+03:00 80000093-0001-fc00-b63f-84710c7967bb [INF] Executed ViewResult - view "Index" executed in 324.7808ms. (f66409e9)
+2021-06-17T10:20:01.7384778+03:00 80000093-0001-fc00-b63f-84710c7967bb [INF] Executed action "sharps_ent.Controllers.HomeController.Index (WEB)" in 369.5684ms (afa2e885)
+2021-06-17T10:20:01.7405598+03:00 80000093-0001-fc00-b63f-84710c7967bb [INF] Executed endpoint '"sharps_ent.Controllers.HomeController.Index (WEB)"' (99874f2b)
+2021-06-17T10:20:01.7483717+03:00 80000093-0001-fc00-b63f-84710c7967bb [INF] Request finished in 677.9181ms 200 text/html; charset=utf-8 (791a596a)
+2021-06-17T10:20:01.8755318+03:00 80000156-0000-ff00-b63f-84710c7967bb [INF] Request starting HTTP/2.0 GET https://localhost:44357/css/site.css   (ca22a1cb)
+2021-06-17T10:20:01.8776583+03:00 800000d5-0000-fe00-b63f-84710c7967bb [INF] Request starting HTTP/2.0 GET https://localhost:44357/lib/jquery/dist/jquery.min.js   (ca22a1cb)
+2021-06-17T10:20:01.8793002+03:00 80000036-0000-fc00-b63f-84710c7967bb [INF] Request starting HTTP/2.0 GET https://localhost:44357/js/site.js?v=4q1jwFhaPaZgr8WAUSrux6hAuh0XDg9kPS3xIVq36I0   (ca22a1cb)
+2021-06-17T10:20:01.9160180+03:00 80000156-0000-ff00-b63f-84710c7967bb [INF] The file "/css/site.css" was not modified (f1f8d725)
+2021-06-17T10:20:01.9170270+03:00 80000036-0000-fc00-b63f-84710c7967bb [INF] The file "/js/site.js" was not modified (f1f8d725)
+2021-06-17T10:20:01.9246166+03:00 800000d5-0000-fe00-b63f-84710c7967bb [INF] The file "/lib/jquery/dist/jquery.min.js" was not modified (f1f8d725)
+2021-06-17T10:20:01.9246723+03:00 80000156-0000-ff00-b63f-84710c7967bb [INF] Request finished in 49.1469ms 304 text/css (791a596a)
+2021-06-17T10:20:01.9246805+03:00 80000036-0000-fc00-b63f-84710c7967bb [INF] Request finished in 45.3575ms 304 application/javascript (791a596a)
+2021-06-17T10:20:01.9248092+03:00 800000d5-0000-fe00-b63f-84710c7967bb [INF] Request finished in 47.2031ms 304 application/javascript (791a596a)
+2021-06-17T10:20:01.9254727+03:00 80000069-0000-fd00-b63f-84710c7967bb [INF] Request starting HTTP/2.0 GET https://localhost:44357/lib/bootstrap/dist/js/bootstrap.bundle.min.js   (ca22a1cb)
+2021-06-17T10:20:01.9259995+03:00 80000069-0000-fd00-b63f-84710c7967bb [INF] The file "/lib/bootstrap/dist/js/bootstrap.bundle.min.js" was not modified (f1f8d725)
+2021-06-17T10:20:01.9262915+03:00 80000069-0000-fd00-b63f-84710c7967bb [INF] Request finished in 0.8478ms 304 application/javascript (791a596a)
+2021-06-17T10:20:05.8659797+03:00 8000006b-0000-fd00-b63f-84710c7967bb [INF] Request starting HTTP/2.0 GET https://localhost:44357/Deposit/GetResponceAction2   (ca22a1cb)
+2021-06-17T10:20:05.8715371+03:00 8000006b-0000-fd00-b63f-84710c7967bb [INF] Executing endpoint '"sharps_ent.Controllers.DepositController.GetResponceAction2 (WEB)"' (500cc934)
+2021-06-17T10:20:05.8760458+03:00 8000006b-0000-fd00-b63f-84710c7967bb [INF] Route matched with "{action = \"GetResponceAction2\", controller = \"Deposit\"}". Executing controller action with signature "Microsoft.AspNetCore.Mvc.IActionResult GetResponceAction2()" on controller "sharps_ent.Controllers.DepositController" ("WEB"). (122b2fdf)
+2021-06-17T10:20:05.8914989+03:00 8000006b-0000-fd00-b63f-84710c7967bb [INF] Entity Framework Core "5.0.7" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.Sqlite"' with options: "MigrationsAssembly=TestServicePlatform.DAL " (9958f5bb)
+2021-06-17T10:20:06.4244880+03:00 8000006b-0000-fd00-b63f-84710c7967bb [INF] Executed DbCommand ("7"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT \"d\".\"DepositId\", \"d\".\"BankId\", \"d\".\"DepositorId\", \"d\".\"Description\", \"d\".\"EmployeeId\", \"d\".\"Percent\", \"d\".\"StatusId\"
+FROM \"Deposit\" AS \"d\"" (0723d8ff)
+2021-06-17T10:20:06.6175019+03:00 8000006b-0000-fd00-b63f-84710c7967bb [INF] Executed DbCommand ("5"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT \"d\".\"DepositId\", \"d\".\"BankId\", \"d\".\"DepositorId\", \"d\".\"Description\", \"d\".\"EmployeeId\", \"d\".\"Percent\", \"d\".\"StatusId\"
+FROM \"Deposit\" AS \"d\"" (0723d8ff)
+2021-06-17T10:20:06.6296650+03:00 8000006b-0000-fd00-b63f-84710c7967bb [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT \"d\".\"DepositId\", \"d\".\"BankId\", \"d\".\"DepositorId\", \"d\".\"Description\", \"d\".\"EmployeeId\", \"d\".\"Percent\", \"d\".\"StatusId\"
+FROM \"Deposit\" AS \"d\"" (0723d8ff)
+2021-06-17T10:20:06.6373065+03:00 8000006b-0000-fd00-b63f-84710c7967bb [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT \"d\".\"DepositId\", \"d\".\"BankId\", \"d\".\"DepositorId\", \"d\".\"Description\", \"d\".\"EmployeeId\", \"d\".\"Percent\", \"d\".\"StatusId\"
+FROM \"Deposit\" AS \"d\"" (0723d8ff)
+2021-06-17T10:20:06.6425351+03:00 8000006b-0000-fd00-b63f-84710c7967bb [INF] Executing ViewResult, running view "~/Views/Generic/Responce.cshtml". (c83d0e25)
+2021-06-17T10:20:06.9820705+03:00 8000006b-0000-fd00-b63f-84710c7967bb [INF] Executed ViewResult - view "~/Views/Generic/Responce.cshtml" executed in 341.2864ms. (f66409e9)
+2021-06-17T10:20:06.9823288+03:00 8000006b-0000-fd00-b63f-84710c7967bb [INF] Executed action "sharps_ent.Controllers.DepositController.GetResponceAction2 (WEB)" in 1106.0268ms (afa2e885)
+2021-06-17T10:20:06.9824233+03:00 8000006b-0000-fd00-b63f-84710c7967bb [INF] Executed endpoint '"sharps_ent.Controllers.DepositController.GetResponceAction2 (WEB)"' (99874f2b)
+2021-06-17T10:20:06.9900498+03:00 8000006b-0000-fd00-b63f-84710c7967bb [INF] Request finished in 1125.5425ms 200 text/html; charset=utf-8 (791a596a)
+2021-06-17T10:20:08.6737013+03:00 80000095-0001-fc00-b63f-84710c7967bb [INF] Request starting HTTP/2.0 GET https://localhost:44357/Log/GetResponceAction2   (ca22a1cb)
+2021-06-17T10:20:08.6830181+03:00 80000095-0001-fc00-b63f-84710c7967bb [INF] Executing endpoint '"sharps_ent.Controllers.LogController.GetResponceAction2 (WEB)"' (500cc934)
+2021-06-17T10:20:08.6882596+03:00 80000095-0001-fc00-b63f-84710c7967bb [INF] Route matched with "{action = \"GetResponceAction2\", controller = \"Log\"}". Executing controller action with signature "Microsoft.AspNetCore.Mvc.IActionResult GetResponceAction2()" on controller "sharps_ent.Controllers.LogController" ("WEB"). (122b2fdf)
+2021-06-17T10:20:08.7848706+03:00 80000095-0001-fc00-b63f-84710c7967bb [INF] Entity Framework Core "5.0.7" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.Sqlite"' with options: "MigrationsAssembly=TestServicePlatform.DAL " (9958f5bb)
+2021-06-17T10:20:08.8064889+03:00 80000095-0001-fc00-b63f-84710c7967bb [INF] Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT \"l\".\"OperationId\", \"l\".\"DepositorId\", \"l\".\"EmployeeId\", \"l\".\"Quantity\", \"l\".\"TypeId\", \"l\".\"TypeOperationTypeId\"
+FROM \"LogOfOperations\" AS \"l\"" (0723d8ff)
+2021-06-17T10:20:08.8816038+03:00 80000095-0001-fc00-b63f-84710c7967bb [INF] Executed DbCommand ("5"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT \"l\".\"OperationId\", \"l\".\"DepositorId\", \"l\".\"EmployeeId\", \"l\".\"Quantity\", \"l\".\"TypeId\", \"l\".\"TypeOperationTypeId\"
+FROM \"LogOfOperations\" AS \"l\"" (0723d8ff)
+2021-06-17T10:20:08.8875867+03:00 80000095-0001-fc00-b63f-84710c7967bb [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT \"l\".\"OperationId\", \"l\".\"DepositorId\", \"l\".\"EmployeeId\", \"l\".\"Quantity\", \"l\".\"TypeId\", \"l\".\"TypeOperationTypeId\"
+FROM \"LogOfOperations\" AS \"l\"" (0723d8ff)
+2021-06-17T10:20:08.8940204+03:00 80000095-0001-fc00-b63f-84710c7967bb [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT \"l\".\"OperationId\", \"l\".\"DepositorId\", \"l\".\"EmployeeId\", \"l\".\"Quantity\", \"l\".\"TypeId\", \"l\".\"TypeOperationTypeId\"
+FROM \"LogOfOperations\" AS \"l\"" (0723d8ff)
+2021-06-17T10:20:08.8967128+03:00 80000095-0001-fc00-b63f-84710c7967bb [INF] Executing ViewResult, running view "~/Views/Generic/Responce.cshtml". (c83d0e25)
+2021-06-17T10:20:08.9030205+03:00 80000095-0001-fc00-b63f-84710c7967bb [INF] Executed ViewResult - view "~/Views/Generic/Responce.cshtml" executed in 6.5343ms. (f66409e9)
+2021-06-17T10:20:08.9031929+03:00 80000095-0001-fc00-b63f-84710c7967bb [INF] Executed action "sharps_ent.Controllers.LogController.GetResponceAction2 (WEB)" in 214.8237ms (afa2e885)
+2021-06-17T10:20:08.9032848+03:00 80000095-0001-fc00-b63f-84710c7967bb [INF] Executed endpoint '"sharps_ent.Controllers.LogController.GetResponceAction2 (WEB)"' (99874f2b)
+2021-06-17T10:20:08.9039536+03:00 80000095-0001-fc00-b63f-84710c7967bb [INF] Request finished in 230.8601ms 200 text/html; charset=utf-8 (791a596a)

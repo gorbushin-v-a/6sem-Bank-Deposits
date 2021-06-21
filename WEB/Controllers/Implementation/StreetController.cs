@@ -10,12 +10,14 @@ namespace sharps_ent.Controllers
     {
 
         private readonly IStreetService streetService;
-        public StreetController(ILogger<GenericController> logger, IStreetService streetService) : base(logger)
+        private readonly ICityService cityService;
+        public StreetController(ILogger<GenericController> logger, IStreetService streetService, ICityService cityService) : base(logger)
         {
             this.streetService = streetService;
+            this.cityService = cityService;
         }
 
-        public override string[] Labels => new string[]{ "NameOfStreet", "CityId" };
+        public override string[] Labels => new string[]{ "NameOfStreet", "City" };
 
         protected override void AddObject()
         {
@@ -48,7 +50,7 @@ namespace sharps_ent.Controllers
                     }
                     if (HttpContext.Request.Form.ContainsKey("2") && HttpContext.Request.Form["2"] != "")
                     {
-                        objects = objects.Where(x => x.CityId.ToString() == HttpContext.Request.Form["2"]);
+                        objects = objects.Where(x => cityService.GetCityById(x.CityId).NameOfCity == HttpContext.Request.Form["2"]);
                     }
                 }
             }
@@ -72,5 +74,9 @@ namespace sharps_ent.Controllers
         }
 
         protected override Dictionary<int, string> GetAttributes() => new Dictionary<int, string>() { { 2, "City" } };
+
+        protected override object GetNames() => new Dictionary<int, string[]> {
+            { 2, streetService.GetStreets().Where(x => GetObjects().Select(y => y[0]).Contains(x.StreetId.ToString())).Select(x => cityService.GetCityById(x.CityId)?.NameOfCity).ToArray() }
+        };
     }
 }

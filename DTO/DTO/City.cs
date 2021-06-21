@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace sharps_ent.Entity
 {
@@ -8,6 +9,8 @@ namespace sharps_ent.Entity
         public int CityId { get; set; }
         public string NameOfCity { get; set; }
         public int CountryId { get; set; }
+
+        [ForeignKey("CountryId")]
         public Country Country { get; set; }
     }
 }

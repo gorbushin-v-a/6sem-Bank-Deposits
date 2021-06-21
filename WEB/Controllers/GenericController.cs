@@ -38,12 +38,7 @@ namespace sharps_ent.Controllers
             {
                 AddObject();
                 _logger.LogInformation($"Added entity from {this.GetType().Name}");
-                return View("~/Views/Generic/Responce.cshtml",
-                    new object[] { new string[] { "Id" }.Concat(Labels).ToArray(),
-                    GetObjects(),
-                    GetAttributes(),
-                    GetStat()
-                    });
+                return Redirect(HttpContext.Request.Path.Value + "\\..\\GetResponceAction2");
             }
             catch
             {
@@ -73,12 +68,7 @@ namespace sharps_ent.Controllers
             {
                 UpdateObject();
                 _logger.LogInformation($"Updated entity from {this.GetType().Name}");
-                return View("~/Views/Generic/Responce.cshtml",
-                    new object[] { new string[] { "Id" }.Concat(Labels).ToArray(),
-                    GetObjects(),
-                    GetAttributes(),
-                    GetStat()
-                    });
+                return Redirect(HttpContext.Request.Path.Value + "\\..\\GetResponceAction2");
             }
             catch
             {
@@ -110,7 +100,8 @@ namespace sharps_ent.Controllers
                     new object[] { new string[] { "Id" }.Concat(Labels).ToArray(),
                     GetObjects(),
                     GetAttributes(),
-                    GetStat()
+                    GetStat(),
+                    GetNames()
                     });
             }
             catch
@@ -127,7 +118,8 @@ namespace sharps_ent.Controllers
                     new object[] { new string[] { "Id" }.Concat(Labels).ToArray(),
                     GetObjects(),
                     GetAttributes(),
-                    GetStat()
+                    GetStat(),
+                    GetNames()
                     });
             }
             catch
@@ -147,7 +139,8 @@ namespace sharps_ent.Controllers
                     new object[] { new string[] { "Id" }.Concat(Labels).ToArray(),
                     GetObjects(),
                     GetAttributes(),
-                    GetStat()
+                    GetStat(),
+                    GetNames()
                     });
             }
             catch
@@ -157,11 +150,12 @@ namespace sharps_ent.Controllers
         }
 
         protected abstract void AddObject();
-        protected abstract string[][] GetObjects(bool id=false);
+        protected abstract string[][] GetObjects(bool id = false);
         protected abstract void UpdateObject();
         protected abstract void RemoveObject();
         protected virtual Dictionary<int, string> GetAttributes() => null;
         protected virtual List<string> GetStat() => null;
         protected virtual object GetStatObj() => null;
+        protected virtual object GetNames() => null;
     }
 }

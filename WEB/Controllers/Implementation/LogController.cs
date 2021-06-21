@@ -8,14 +8,20 @@ namespace sharps_ent.Controllers
 {
     public sealed class LogController : GenericController
     {
-
         private readonly ILogOfOperationsService logService;
-        public LogController(ILogger<GenericController> logger, ILogOfOperationsService logService) : base(logger)
+        private readonly IEmployeeService employeeService;
+        private readonly IDepositorService depositorService;
+        private readonly ITypeOperationService typeOperationService;
+
+        public LogController(ILogger<GenericController> logger, ILogOfOperationsService logService, IEmployeeService employeeService, IDepositorService depositorService, ITypeOperationService typeOperationService) : base(logger)
         {
             this.logService = logService;
+            this.employeeService = employeeService;
+            this.depositorService = depositorService;
+            this.typeOperationService = typeOperationService;
         }
 
-        public override string[] Labels => new string[] { "EmployeeId", "DepositorId", "TypeId", "Quantity" };
+        public override string[] Labels => new string[] { "Employee", "Depositor", "Type", "Quantity" };
 
         protected override void AddObject()
         {
@@ -46,15 +52,15 @@ namespace sharps_ent.Controllers
                     }
                     if (HttpContext.Request.Form.ContainsKey("1") && HttpContext.Request.Form["1"] != "")
                     {
-                        objects = objects.Where(x => x.EmployeeId.ToString() == HttpContext.Request.Form["1"]);
+                        objects = objects.Where(x => employeeService.GetEmployeeById(x.EmployeeId).NameOfEmployee == HttpContext.Request.Form["1"]);
                     }
                     if (HttpContext.Request.Form.ContainsKey("2") && HttpContext.Request.Form["2"] != "")
                     {
-                        objects = objects.Where(x => x.DepositorId.ToString() == HttpContext.Request.Form["2"]);
+                        objects = objects.Where(x => depositorService.GetDepositorById(x.DepositorId).NameOfDepositor == HttpContext.Request.Form["2"]);
                     }
                     if (HttpContext.Request.Form.ContainsKey("3") && HttpContext.Request.Form["3"] != "")
                     {
-                        objects = objects.Where(x => x.TypeId.ToString() == HttpContext.Request.Form["3"]);
+                        objects = objects.Where(x => typeOperationService.GetTypeOperationById(x.TypeId).NameOfType == HttpContext.Request.Form["3"]);
                     }
                     if (HttpContext.Request.Form.ContainsKey("4") && HttpContext.Request.Form["4"] != "")
                     {
@@ -97,15 +103,15 @@ namespace sharps_ent.Controllers
                 }
                 if (HttpContext.Request.Form.ContainsKey("1") && HttpContext.Request.Form["1"] != "")
                 {
-                    objects = objects.Where(x => x.EmployeeId.ToString() == HttpContext.Request.Form["1"]);
+                    objects = objects.Where(x => employeeService.GetEmployeeById(x.EmployeeId).NameOfEmployee == HttpContext.Request.Form["1"]);
                 }
                 if (HttpContext.Request.Form.ContainsKey("2") && HttpContext.Request.Form["2"] != "")
                 {
-                    objects = objects.Where(x => x.DepositorId.ToString() == HttpContext.Request.Form["2"]);
+                    objects = objects.Where(x => depositorService.GetDepositorById(x.DepositorId).NameOfDepositor == HttpContext.Request.Form["2"]);
                 }
                 if (HttpContext.Request.Form.ContainsKey("3") && HttpContext.Request.Form["3"] != "")
                 {
-                    objects = objects.Where(x => x.TypeId.ToString() == HttpContext.Request.Form["3"]);
+                    objects = objects.Where(x => typeOperationService.GetTypeOperationById(x.TypeId).NameOfType == HttpContext.Request.Form["3"]);
                 }
                 if (HttpContext.Request.Form.ContainsKey("4") && HttpContext.Request.Form["4"] != "")
                 {
@@ -114,5 +120,11 @@ namespace sharps_ent.Controllers
             }
             return objects;
         }
+
+        protected override object GetNames() => new Dictionary<int, string[]> {
+            { 1, logService.GetLogOfOperations().Where(x => GetObjects().Select(y => y[0]).Contains(x.OperationId.ToString())).Select(x => employeeService.GetEmployeeById(x.EmployeeId).NameOfEmployee).ToArray() } ,
+            { 2, logService.GetLogOfOperations().Where(x => GetObjects().Select(y => y[0]).Contains(x.OperationId.ToString())).Select(x => depositorService.GetDepositorById(x.DepositorId).NameOfDepositor).ToArray() } ,
+            { 3, logService.GetLogOfOperations().Where(x => GetObjects().Select(y => y[0]).Contains(x.OperationId.ToString())).Select(x => typeOperationService.GetTypeOperationById(x.TypeId).NameOfType).ToArray() } ,
+        };
     }
 }
